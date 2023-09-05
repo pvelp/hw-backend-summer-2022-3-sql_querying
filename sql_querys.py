@@ -30,7 +30,9 @@ SELECT flight_no, COUNT(1) as count FROM flights GROUP BY flight_no HAVING count
 # Вывести число перелетов внутри одной таймзоны
 # Нужно вывести 1 значение в колонке count
 TASK_3_QUERY = """
-
+SELECT COUNT(1) FROM flights INNER JOIN airports_data as a ON flights.arrival_airport = a.airport_code
+INNER JOIN  airports_data as b ON flights.departure_airport = b.airport_code
+WHERE a.timezone = b.timezone;
 """
 #  count
 # --------
